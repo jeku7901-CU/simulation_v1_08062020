@@ -1,0 +1,6 @@
+have fized the creatallpossibilites function and the simulation_v2.py function
+
+
+need to build an sbatch to run them 
+
+concenerned about the number of files making and need to build  gather function for the end 
