@@ -1,6 +1,8 @@
 from __future__ import division
 import itertools
 
+outdir="/Users/jeku7901/olwin_dowell_labs/2020_barcode_seq_run2/simulation_jupyter_sbatch/outputs/"
+
 def initiate_cells_per_myofiber(number_of_stemcells = 5, number_of_myoblasts = 0):
     cells = []
 
@@ -73,7 +75,8 @@ def main_function(inputfile):
     line=line.strip("\n")
     list_percent_myoblasts_dividing=line.split(",")
     wf.close()
-    wf = open(inputfile, "w")
+    wf = open(outdir+inputfile, "w")
+    
 
     cells = initiate_cells_per_myofiber()    
     cells = masterdivision_function(cells, list_percent_myoblasts_dividing = list_percent_myoblasts_dividing)
