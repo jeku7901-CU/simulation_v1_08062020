@@ -1,5 +1,6 @@
 from __future__ import division
 import itertools
+import sys
 
 outdir="/Users/jeku7901/olwin_dowell_labs/2020_barcode_seq_run2/simulation_jupyter_sbatch/outputs/"
 
@@ -18,7 +19,9 @@ def divisionrate(cells, percent_stemcells_dividing = 100, percent_myoblasts_divi
    # print(percent_stemcells_dividing, percent_myoblasts_dividing)
     number_of_stemcells = cells.count("sc")  #len([cell for cell in cells if cell == "sc"])
     number_of_myoblasts = cells.count("my")  #len([cell for cell in cells if cell == "my"])
-
+    percent_stemcells_dividing = int(percent_stemcells_dividing)
+    percent_myoblasts_dividing=int(percent_myoblasts_dividing)
+    #print(percent_stemcells_dividing,percent_myoblasts_dividing)
     subset_of_stemcells = number_of_stemcells * (percent_stemcells_dividing / 100)
     subset_of_myoblasts = number_of_myoblasts * (percent_myoblasts_dividing / 100)
 
@@ -69,20 +72,21 @@ def masterdivision_function(cells, total_hrs = 120, subsequent_div_hrs = 8, max_
     return cells
 
 def main_function(inputfile):
-    #print("starting")
+    lines=[]
     wf = open(inputfile, "r")
-    line=wf.readline()
-    line=line.strip("\n")
-    list_percent_myoblasts_dividing=line.split(",")
+    for line in wf.readlines():
+    	line=line.strip("\n")
+    	list_percent_myoblasts_dividing=line.split(",")
+    	cells = initiate_cells_per_myofiber()    
+    	cells = masterdivision_function(cells, list_percent_myoblasts_dividing = list_percent_myoblasts_dividing)
+    	line = [cells.count("my"), cells.count("sc")] + list_percent_myoblasts_dividing
+    	line = ",".join(map(str, line)) + "\n"
+    	lines.append(line)
+        #This does not seem to update the file - put the datat in the file 
     wf.close()
-    wf = open(outdir+inputfile, "w")
-    
-
-    cells = initiate_cells_per_myofiber()    
-    cells = masterdivision_function(cells, list_percent_myoblasts_dividing = list_percent_myoblasts_dividing)
-    line = [cells.count("my"), cells.count("sc")] + list_percent_myoblasts_dividing
-    line = ",".join(map(str, line)) + "\n"
-    wf.write(line)
+    wf = open(inputfile, "w")
+    for lines in lines:	
+	wf.write(line)
     wf.close()
 
 if __name__ == "__main__":

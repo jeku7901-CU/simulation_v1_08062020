@@ -1,6 +1,15 @@
-have fized the creatallpossibilites function and the simulation_v2.py function
+simulation is now working 
+
+we just need to build an sbatch to run it
+
+and after that, we need a parser to filter data based on amount of myoblasts/SCs being produced
+
+python2 simulation_v2.py simulation_output_tmp.csv
 
 
-need to build an sbatch to run them 
 
-concenerned about the number of files making and need to build  gather function for the end 
+8/27
+-change so that the input and output file are different 
+-go into directory and count csv files ls -l | wc -l 
+
+
