@@ -1,6 +1,7 @@
 from __future__ import division
 import itertools
 import sys
+import os
 
 outdir="/Users/jeku7901/olwin_dowell_labs/2020_barcode_seq_run2/simulation_jupyter_sbatch/outputs/"
 
@@ -72,7 +73,9 @@ def masterdivision_function(cells, total_hrs = 120, subsequent_div_hrs = 8, max_
     return cells
 
 def main_function(inputfile):
+    outdir="/Users/jeku7901/olwin_dowell_labs/2020_barcode_seq_run2/simulation_jupyter_sbatch/outputs/outputs_sim/"
     lines=[]
+    rootname=os.path.basename(inputfile)
     wf = open(inputfile, "r")
     for line in wf.readlines():
     	line=line.strip("\n")
@@ -84,7 +87,8 @@ def main_function(inputfile):
     	lines.append(line)
         #This does not seem to update the file - put the datat in the file 
     wf.close()
-    wf = open(inputfile, "w")
+    outputfile=outdir+rootname
+    wf = open(outputfile, "w")
     for lines in lines:	
 	wf.write(line)
     wf.close()
