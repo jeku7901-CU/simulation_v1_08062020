@@ -12,4 +12,7 @@ python2 simulation_v2.py simulation_output_tmp.csv
 -change so that the input and output file are different 
 -go into directory and count csv files ls -l | wc -l 
 
-
+9/4
+To run everything the following steps:
+- sbatch createpossibilities.sh 
+- bash run_simulation_v2.sh

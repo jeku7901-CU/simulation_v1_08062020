@@ -1,9 +1,10 @@
-
-indir=/Users/jeku7901/olwin_dowell_labs/2020_barcode_seq_run2/simulation_jupyter_sbatch/outputs/
+outfiledir=/scratch/Users/jeku7901/sim_output/
+indir=/scratch/Users/jeku7901/sim_possibilities_output/
 
 for path_filename in `ls ${indir}*.csv`;do
-	sbatch --export=filename=$path_filename simulation_v2.sh
+        rootname=`basename $path_filename`
+	outfilename=${outfiledir}$rootname
+	sbatch --export=filename=$path_filename,outfilename=$outfilename simulation_v2.sh
 	echo $path_filename	
-	wait 1 
-
+	wait 300 # this is in seconds so adjust for how long it takes
 done 

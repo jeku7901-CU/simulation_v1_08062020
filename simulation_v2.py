@@ -72,8 +72,7 @@ def masterdivision_function(cells, total_hrs = 120, subsequent_div_hrs = 8, max_
             cells = sc_to_myb_function(cells, 0)
     return cells
 
-def main_function(inputfile):
-    outdir="/Users/jeku7901/olwin_dowell_labs/2020_barcode_seq_run2/simulation_jupyter_sbatch/outputs/outputs_sim/"
+def main_function(inputfile, outputfile):
     lines=[]
     rootname=os.path.basename(inputfile)
     wf = open(inputfile, "r")
@@ -87,7 +86,6 @@ def main_function(inputfile):
     	lines.append(line)
         #This does not seem to update the file - put the datat in the file 
     wf.close()
-    outputfile=outdir+rootname
     wf = open(outputfile, "w")
     for lines in lines:	
 	wf.write(line)
@@ -95,4 +93,5 @@ def main_function(inputfile):
 
 if __name__ == "__main__":
 	inputfile=sys.argv[1]
-	main_function(inputfile)
+	outputfile=sys.argv[2]
+	main_function(inputfile, outputfile)
