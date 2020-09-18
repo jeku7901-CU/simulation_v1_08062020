@@ -16,3 +16,9 @@ python2 simulation_v2.py simulation_output_tmp.csv
 To run everything the following steps:
 - sbatch createpossibilities.sh 
 - bash run_simulation_v2.sh
+- we also moved everything over to scratch /scratch/Users/jeku7901/sim_output/ & /sim_possibilities_output/
+- what about "simulation_submit_v2.sh"?
+
+9/18
+- Created a "createsomepossibilities.py" which instead of calculating all possible 15 division percentatges,
+	it picks 15 random percents 100,000 times

@@ -87,7 +87,7 @@ def main_function(inputfile, outputfile):
         #This does not seem to update the file - put the datat in the file 
     wf.close()
     wf = open(outputfile, "w")
-    for lines in lines:	
+    for line in lines:	
 	wf.write(line)
     wf.close()
 

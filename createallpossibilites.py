@@ -5,7 +5,7 @@ import itertools
 outdir="/scratch/Users/jeku7901/sim_possibilities_output/"
 def main():
 	filenumber=0
-	possible_percents = [i for i in range(0,101,5)]
+	possible_percents = [i for i in range(0,101,10)]
  	all_percents_list = itertools.product(possible_percents, repeat = 15)
         lines=[]
 	n=0
@@ -18,11 +18,11 @@ def main():
 		line = list_percent_myoblasts_dividing
 		line = ",".join(map(str, line)) + "\n"
 		lines.append(line)
-		if len(lines)==10000000:
+		if len(lines)==1000:
                         for line in lines:
                                 wf.write(line)
                         lines=[]
-		if n==1000000000000000000:
+		if n==100000000000:
 			filenumber=filenumber+1
 			wf.close()
                         write_file = outdir+"simulation_output_" + str(filenumber) + ".csv"
