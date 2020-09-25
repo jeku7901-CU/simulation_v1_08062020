@@ -52,8 +52,7 @@ def masterdivision_function(cells, total_hrs = 96, subsequent_div_hrs = 8, max_d
     # this is division#1
     total_hrs = total_hrs - 30
     cells = divisionrate(cells, 20, 0) # you get 1 out of 5 MuSCs starting to divide -> 20% of 5
-#    cells = sc_to_myb_function(cells, 29)
-    cells = sc_to_myb_function(cells, 40)
+    cells = sc_to_myb_function(cells, 29)
     # to make sure cells stop dividing after total_hrs is over:
     for i,div in enumerate(range(max_div)):
         if total_hrs < 0:
@@ -63,9 +62,8 @@ def masterdivision_function(cells, total_hrs = 96, subsequent_div_hrs = 8, max_d
 	    # this is for subsequent divisions
             percent_myoblasts_dividing = list_percent_myoblasts_dividing[i]
             total_hrs = total_hrs - subsequent_div_hrs
-            cells = divisionrate(cells, 0, percent_myoblasts_dividing) # Only the initial myoblasts are dividing (at 100%)
+            cells = divisionrate(cells, 0,percent_myoblasts_dividing)
             cells = sc_to_myb_function(cells, 0)
-#            cells = sc_to_myb_function(cells, 100) ###########? when the myoblasts are dividing into more myoblasts? 
     	
     return cells
 

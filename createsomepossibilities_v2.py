@@ -16,8 +16,10 @@ def main():
 	possible_percents = [i for i in range(0,101,5)] #try with 5%s now that it runs faster
 	lines=[]
 	n=0
-	wf=open(outdir+"sim_some_possibilities.csv", "w")
-	for i in range(0,100000):
+	#wf=open(outdir+"sim_some_possibilities.csv", "w")
+	wf=open(outdir+"sim_some_possibilities_50m.csv", "w")
+	#for i in range(0,500000):
+	for i in range(0,50000000):
 		line=random_product(possible_percents, repeat=15)
 		line = ",".join(map(str, line)) + "\n"
 		lines.append(line)

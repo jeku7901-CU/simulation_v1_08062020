@@ -21,4 +21,7 @@ To run everything the following steps:
 
 9/18
 - Created a "createsomepossibilities.py" which instead of calculating all possible 15 division percentatges,
-	it picks 15 random percents 100,000 times
+	it picks 15 random percents 100,000 time
+- To run the simulation on a single possibilities file 
+
+	python2 simulation_v2.py /scratch...sim_possibilities_output/ /scratch...sim_output/
